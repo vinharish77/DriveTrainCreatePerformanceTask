@@ -2,9 +2,11 @@ package org.usfirst.frc.team4188.robot.subsystems;
 
 import org.usfirst.frc.team4188.robot.PIDRobotDrive;
 import org.usfirst.frc.team4188.robot.RobotMap;
+import org.usfirst.frc.team4188.robot.commands.ManualDrive;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,10 +23,11 @@ public class DriveTrain extends Subsystem {
 	CANTalon rearRight = RobotMap.rearRight;
 	CANTalon rearLeft = RobotMap.rearLeft;
 	PIDRobotDrive driveBase = RobotMap.talonDriveBase;
-	AnalogGyro gyro = RobotMap.gyro;
+	ADXRS450_Gyro gyro = RobotMap.gyro;
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new ManualDrive());
     }
     
     public void mecanumDrive(double x, double y, double twist, double throttle, double direction){

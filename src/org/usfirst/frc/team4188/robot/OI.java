@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4188.robot;
 
-import org.usfirst.frc.team4188.robot.commands.VictorTest;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -57,19 +55,6 @@ public class OI {
 	public JoystickButton pilot11;
 	public JoystickButton pilot12;
 	
-	
-	public JoystickButton copilot1;
-	public JoystickButton copilot2;
-	public JoystickButton copilot3;
-	public JoystickButton copilot4;
-	public JoystickButton copilot5;
-	public JoystickButton copilot6;
-	public JoystickButton copilot7;
-	public JoystickButton copilot8;
-	public JoystickButton copilot9;
-	public JoystickButton copilot10;
-	public JoystickButton copilot11;
-	public JoystickButton copilot12;
 	
 	
 	public OI(){
