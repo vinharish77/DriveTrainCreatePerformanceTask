@@ -60,6 +60,17 @@ public class DriveTrain extends Subsystem {
 	public void gyroReset(){
 		gyro.reset();
 	}
-    
+	public void conservePower(boolean on){
+		if(on){
+			RobotMap.alphaValue = 0;
+			RobotMap.betaValue = 0.9;
+			
+		}
+		else{
+			RobotMap.alphaValue = 1;
+			RobotMap.betaValue = 1;
+		}
+		
+	}
 }
 

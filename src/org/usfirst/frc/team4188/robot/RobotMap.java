@@ -5,6 +5,7 @@ import com.ctre.CANTalon.FeedbackDevice;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -21,6 +22,7 @@ public class RobotMap {
 	public static CANTalon rearRight;
 	public static CANTalon frontLeft;
 	public static CANTalon rearLeft;
+	public static PowerDistributionPanel pdp;
 	
 	public static Victor frontRightDriveMotor;
 	public static Victor frontLeftDriveMotor;
@@ -30,8 +32,13 @@ public class RobotMap {
 	public static PIDRobotDrive talonDriveBase;
 	public static PIDRobotDrive victorDriveBase;
 	public static ADXRS450_Gyro gyro;
+	public static double alphaValue;
+	public static double betaValue;
 	//public static AnalogGyro gyro;
 	public static void init() {
+		
+		alphaValue = 1;	
+		betaValue = 1;
 		// TODO Auto-generated method stub
 		
 	
@@ -72,6 +79,8 @@ public class RobotMap {
 	victorDriveBase.setMaxOutput(1.0);
 	
 	gyro = new ADXRS450_Gyro();
+	pdp = new PowerDistributionPanel();
+	
 	//gyro = new AnalogGyro(0);
 	}
 }

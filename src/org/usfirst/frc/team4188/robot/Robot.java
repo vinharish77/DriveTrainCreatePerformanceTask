@@ -1,12 +1,14 @@
 
 package org.usfirst.frc.team4188.robot;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4188.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -21,6 +23,9 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static OI oi;
 
+	public enum PowerState{NORMAL, POWERCONSERVING}
+	public static PowerState powerState = PowerState.NORMAL;
+	
     Command autonomousCommand;
     SendableChooser chooser;
 
@@ -99,6 +104,24 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        if(powerState == PowerState.NORMAL){
+        	if(RobotMap.pdp.getVoltage() < 7.0){
+        		Robot.drivetrain.conservePower(true);
+        		powerState = PowerState.POWERCONSERVING;
+        	}
+        }
+        if(powerState == PowerState.POWERCONSERVING){
+        	//Robot.drivetrain.conservePower(false);
+        	//powerState = PowerState.NORMAL;
+        	
+        	
+        	if(Math.abs(Robot.oi.pilotController.getY(Hand.kLeft))<0.3){
+        			Robot.drivetrain.conservePower(false);
+        			powerState = PowerState.NORMAL;
+        		
+        	}
+        	
+        }
     }
     
     /**
