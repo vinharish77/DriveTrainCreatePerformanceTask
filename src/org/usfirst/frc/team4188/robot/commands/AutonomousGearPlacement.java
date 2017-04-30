@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutonomousMove extends CommandGroup {
+public class AutonomousGearPlacement extends CommandGroup {
 
-    public AutonomousMove() {
+    public AutonomousGearPlacement() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,7 +24,9 @@ public class AutonomousMove extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutoDriveToDistance(36/12.0, 0.6));
-    	addSequential(new TurnToAngle(90));
+    	addSequential(new AutoDriveToDistance((88.0/12.0), 0.6));
+    	addSequential(new TurnToAngle(-56));
+    	addSequential(new AutoDriveToDistance(45.0/12.0,0.6));
+    	addSequential(new AutoDriveToDistance((31.0/12.0), 0.6),5);
     }
 }

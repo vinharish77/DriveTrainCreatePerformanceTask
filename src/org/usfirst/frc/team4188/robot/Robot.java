@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team4188.robot.commands.AutonomousGearPlacement;
 import org.usfirst.frc.team4188.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -27,7 +28,7 @@ public class Robot extends IterativeRobot {
 	public static PowerState powerState = PowerState.NORMAL;
 	
     Command autonomousCommand;
-    SendableChooser chooser;
+    SendableChooser autoChooser;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,9 +40,10 @@ public class Robot extends IterativeRobot {
 		
 		drivetrain = new DriveTrain();
 		
-        chooser = new SendableChooser();
+        autoChooser = new SendableChooser();
 //        chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        SmartDashboard.putData("Autonomous Selection", autoChooser);
+        autoChooser.addObject("Gear Placement Autonomous", new AutonomousGearPlacement());
     }
 	
 	/**
@@ -67,7 +69,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
+    	autonomousCommand = (Command) autoChooser.getSelected();
         
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
