@@ -20,8 +20,10 @@ import edu.wpi.first.wpilibj.VictorSP;
 public class RobotMap {
 	public static CANTalon frontRight;
 	public static CANTalon rearRight;
+	public static CANTalon middleRight;
 	public static CANTalon frontLeft;
 	public static CANTalon rearLeft;
+	public static CANTalon middleLeft;
 	public static PowerDistributionPanel pdp;
 	
 	public static Victor frontRightDriveMotor;
@@ -54,8 +56,10 @@ public class RobotMap {
 	
 	frontRight = new CANTalon(11);
 	rearRight = new CANTalon(12);
-	frontLeft = new CANTalon(13);
-	rearLeft = new CANTalon(14);
+	middleRight = new CANTalon(13);
+	frontLeft = new CANTalon(14);
+	rearLeft = new CANTalon(15);
+	middleLeft = new CANTalon(16);
 	
 	rearLeft.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
 	rearRight.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
@@ -66,7 +70,7 @@ public class RobotMap {
 	rearRightDriveMotor = new Victor(2);
 	rearLeftDriveMotor = new Victor(3);
 	
-	talonDriveBase = new PIDRobotDrive(frontLeft, rearLeft, frontRight,rearRight);
+	talonDriveBase = new PIDRobotDrive(frontLeft, rearLeft, middleLeft, frontRight,rearRight, middleRight);
 	talonDriveBase.setSafetyEnabled(false);
 	talonDriveBase.setExpiration(0.1);
 	talonDriveBase.setSensitivity(0.5);

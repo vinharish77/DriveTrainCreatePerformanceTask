@@ -36,6 +36,12 @@ public class PIDRobotDrive extends RobotDrive implements PIDOutput {
             SpeedController frontRightMotor, SpeedController rearRightMotor) {
         super(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
     }
+    public PIDRobotDrive(SpeedController frontLeftMotor, SpeedController rearLeftMotor,SpeedController middleLeftMotor,
+            SpeedController frontRightMotor, SpeedController rearRightMotor, SpeedController middleRightMotor){
+    	super(frontLeftMotor, frontRightMotor);
+    	robotDrive2 = new RobotDrive(rearLeftMotor, rearRightMotor);
+    	robotDrive3 = new RobotDrive (middleLeftMotor, middleRightMotor);
+    }
 
     public enum PIDType {
     	turnToAngle,
